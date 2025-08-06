@@ -1,0 +1,191 @@
+/* Import and apply the pixel font */
+body {
+  background-color: #f2e5d7;
+  background-image: url("./assets/pixelated_rose.png"); /* Using a placeholder texture */
+  background-size: 5rem;
+
+  background-color: rgba(237, 214, 182, 0.9);
+  background-blend-mode: lighten;
+  font-family: "Press Start 2P", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  color: #4a2e2a;
+  position: relative;
+}
+
+#main-container {
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.Table {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-image: url("./assets/table_texture.png");
+  height: 30vh;
+  background-size: 20rem;
+  background-repeat: repeat;
+}
+
+.goal-text {
+  position: absolute;
+  top: clamp(1rem, 3vh, 5rem);
+  width: 100%;
+  left: 0;
+}
+
+#goal-title {
+  font-size: 2em;
+  margin: 0;
+}
+
+#goal-subtitle {
+  font-size: 0.8em;
+  margin-top: 10px;
+}
+
+#rose-counter {
+  font-size: 2.5em;
+  margin: 20px 0;
+}
+
+.rose-display {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+}
+
+.main-rose-image {
+  height: 35vh;
+  display: block;
+}
+
+#click-button {
+  background-image: url("./assets/button_elevated.png");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  height: 10vh;
+  width: 20vw;
+  max-width: 10rem;
+  border: none;
+  cursor: pointer;
+}
+
+#click-button:active {
+  background-image: url("./assets/button_pressed.png");
+}
+
+/* Cat Paw and Letter Animation */
+#letter-reveal-container {
+  position: absolute;
+
+  bottom: 0;
+  right: clamp(1rem, 10vw, 16rem);
+}
+
+#cat-paw-image {
+  width: clamp(1rem, 20vw, 20rem);
+  z-index: 1;
+  margin-top: clamp(-8rem, -20vh, -3rem);
+  position: absolute;
+  bottom: -300px;
+  right: 0;
+  display: block;
+  transition: bottom 1s ease-in-out;
+}
+
+#letter {
+  width: clamp(1rem, 20vw, 20rem);
+  position: absolute;
+  bottom: -300px;
+  right: 0;
+  z-index: 0;
+  cursor: pointer;
+  transition: bottom 1s ease-in-out;
+}
+
+/* Final Message Pop-up */
+#final-message-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#final-message-container.visible {
+  opacity: 1;
+}
+
+.letter-content {
+  background-color: #fffaf0;
+  border: 5px solid #4a2e2a;
+  padding: 40px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1.6;
+  animation: fadeInScale 0.5s ease-in-out;
+}
+
+/* Rose Particle Animation */
+.rose-particle {
+  position: absolute;
+  height: 5vh;
+  pointer-events: none;
+  aspect-ratio: 1/1;
+  background-image: url("./assets/pixelated_rose.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 10;
+  animation: floatUp 2s ease-out forwards;
+}
+
+/* General utility class */
+.hidden {
+  display: none;
+}
+
+/* Keyframe Animations */
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-200px) rotate(360deg);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
